@@ -242,14 +242,3 @@ defmodule Bno055 do
     end
   end
 end
-
-defmodule Relay do
-  alias SSE.Chunk
-  alias EventBus.Model.Event
-
-  def update(data) do
-    chunk = %Chunk{data: Poison.encode!(data)}
-    event = %Event{id: "1", data: chunk, topic: :sse}
-    EventBus.notify(event) |> IO.inspect()
-  end
-end
